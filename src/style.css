@@ -1,0 +1,174 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  -webkit-text-size-adjust: none;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1b1d20;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+body.paused {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  touch-action: manipulation;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: #5fa8d3;
+}
+
+.container {
+  width: min(468px, 90%);
+  margin: 0 auto;
+  padding-block: 0.8rem 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 100vh;
+}
+
+footer {
+  font-size: 1.5rem;
+  margin-top: auto;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+#slide {
+  margin-block: 3rem;
+  display: grid;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: black;
+  isolation: isolate;
+  box-shadow: 0 4px 20px 2px rgba(0, 0, 0, 0.4);
+  aspect-ratio: 9/16;
+}
+
+#slide-elements {
+  grid-area: 1/1;
+  display: grid;
+}
+
+#slide-elements > * {
+  grid-area: 1/1;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#slide-elements > *.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#slide-controls {
+  grid-area: 1/1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+#slide-controls button {
+  border: none;
+  appearance: none;
+  cursor: pointer;
+  opacity: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#slide-thumb {
+  display: flex;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#slide-thumb > div {
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 5px;
+  border-radius: 5px;
+  flex: 1;
+  pointer-events: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#slide-thumb .thumb-item.active {
+  background-color: rgba(255, 255, 255, 0.9);
+  height: inherit;
+  border-radius: inherit;
+  transform: translateX(-100%);
+  animation: thumb forwards linear running;
+}
+
+#slide-thumb .thumb-item.paused {
+  animation-play-state: paused;
+}
+
+@keyframes thumb {
+  to {
+    transform: initial;
+  }
+}
+
+#slide-controls .audio-btn {
+  position: absolute;
+  width: 44px;
+  aspect-ratio: 1/1;
+  bottom: 0;
+  right: 0;
+  opacity: 1;
+  display: flex;
+  background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#slide-controls .audio-btn > div {
+  background-color: rgb(38, 38, 38);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  #slide-controls .audio-btn {
+    justify-content: center;
+    align-items: center;
+  }
+  #slide-controls .audio-btn > div {
+    width: 25px;
+    height: 25px;
+  }
+}
