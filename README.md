@@ -30,6 +30,7 @@ It was a great way to practice TypeScript and also learn more about Pointer Even
 ✔️ Turn the sound on or off on videos
 
 - Click on the button at the bottom right of the slide to turn the sound on/off. The video always starts muted.
+
   <table style="width: 30%; border: none;" cellspacing="0" cellpadding="0" border="0">
     <tr>
     <td>Audio is muted</td>
